@@ -77,7 +77,7 @@ void AutoSaleMachine::ShowInfo(float money)
 {
 	//std::cout << std::endl;
 	std::cout << "Machine Id: " << GetId() << std::endl;
-	std::cout << "+----+--------------------------------+--------+----------------+----------------+" << std::endl;//32+8+16+16
+	std::cout << "+----+--------------------------------+--------+----------------+----------------+" << std::endl;//4+32+8+16+16
 	std::cout << "| id |            DrinkName           | Price  |      Num       |   PaidCanBuy   |" << std::endl;
 	std::cout << "+----+--------------------------------+--------+----------------+----------------+" << std::endl;
 	for (int i = 0; i < DrinkindWithNums.size(); i++)
