@@ -25,7 +25,7 @@ public:
 	void ShowInfo();
 	float HowMoney(){ return account; }
 	void initMoney(float initMoney){ account = initMoney; };
-	void PushDrinkVec(const std::pair<Drink, int> &drinkNumPair);
+	void PushDrinkVec(std::pair<Drink, int> &drinkNumPair);
 	
 
 

@@ -8,7 +8,10 @@
 #include "MysqlSingleton.h"
 #include "Consumer.h"
 #include "Drink.h"
-namespace CD{
+#define NAMESPACE_CD_BEGIN namespace CD{
+#define NAMESPACE_CD_END }
+
+NAMESPACE_CD_BEGIN
 
 void ShowASMOwnerMachineInfo(ASMOwner asmOwner)
 {
@@ -114,7 +117,45 @@ bool initConsumer(Consumer &consumer)
 		consumer.PushDrinkVec(drinkNumPair);
 	}
 	return true;
-
+}
+bool JudgeInputValid(std::string input, const std::vector<char>& validRange, std::string SPECIAL_INPUT="")
+{
+	if (validRange.empty() || validRange.size() != 2)
+	{
+		std::cout << "*****ERROR: RANGE WRONG*****" << std::endl;
+		return false;
+	}
+	if (SPECIAL_INPUT == "quit" || SPECIAL_INPUT == "Quit")
+	{
+		exit(1);
+	}
+	if (input.empty())
+	{
+		std::cout << "*****EMPTY INPUT*****" << std::endl;
+		return false;
+	}
+	if (input.size() != 1)
+	{
+		std::cout << "*****INVALID INPUT*****" << std::endl;
+		return false;
+	}
+	else if (input[0] < validRange[0] || input[0] > validRange[1])
+	{
+		std::cout << "****INPUT OUT OF RANGE*****" << std::endl;
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+void ChoiceOutput(std::vector<std::string> choices,std::string tip="option>")
+{
+	for (int i = 0; i < choices.size(); i++)
+	{
+		std::cout << choices[i] << std::endl;
+	}
+	std::cout << tip;
 }
 
-}
+NAMESPACE_CD_END

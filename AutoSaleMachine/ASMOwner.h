@@ -26,6 +26,7 @@ public:
 	void ShowDrinksInfo(int id,float pay=0);
 	void InitMachine(AutoSaleMachine machine){ saleMachines.push_back(machine); };
 	void InitMachine(const std::vector<AutoSaleMachine> &saleMachineVec);
+	AutoSaleMachine* GetMachineById(int id) { return &saleMachines[id]; }
 private:
 	std::vector<AutoSaleMachine>saleMachines;
 

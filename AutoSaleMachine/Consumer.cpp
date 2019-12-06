@@ -83,7 +83,17 @@ void Consumer::ShowInfo()
 	std::cout << std::endl;
 }
 
-void Consumer::PushDrinkVec(const std::pair<Drink, int> &drinkNumPair)
+void Consumer::PushDrinkVec(std::pair<Drink, int> &drinkNumPair)
 {
-	drinkVec.push_back(drinkNumPair);
+	int i;
+	for (i = 0; i < drinkVec.size(); i++)
+	{
+		if (drinkVec[i].first.GetName() == drinkNumPair.first.GetName())
+		{
+			drinkVec[i].second++;
+			return;
+		}
+	}
+	if (i == drinkVec.size())
+		drinkVec.push_back(drinkNumPair);
 }

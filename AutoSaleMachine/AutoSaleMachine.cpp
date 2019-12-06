@@ -145,3 +145,48 @@ void AutoSaleMachine::ShowInfo(float money)
 	std::cout << "+----+--------------------------------+--------+----------------+----------------+" << std::endl;
 	std::cout << std::endl;
 }
+
+std::string AutoSaleMachine::Sale(int drinkId)
+{
+	money += DrinkindWithNums[drinkId-1].first.GetPrice();
+	if (DrinkindWithNums[drinkId-1].second != 1)
+	{
+		DrinkindWithNums[drinkId-1].second--;
+		if (currentDrinkNums == 0 )
+		{
+			if (!DrinkindWithNums.empty())
+			{
+				for (int i = 0; i < DrinkindWithNums.size(); i++)
+					currentDrinkNums += DrinkindWithNums[i].second;
+
+			}
+		}
+		else
+		{
+			currentDrinkNums--;
+		}
+	}
+	else
+	{
+		/*最后一瓶此种饮料杯买走*/
+		std::vector<pair<Drink, int>>::iterator it = DrinkindWithNums.begin();
+		for (int i = 1; i < drinkId; i++)
+			it++;
+		DrinkindWithNums.erase(it);
+		if (currentDrinkNums == 0)
+		{
+			if (!DrinkindWithNums.empty())
+			{
+				for (int i = 0; i < DrinkindWithNums.size(); i++)
+					currentDrinkNums += DrinkindWithNums[i].second;
+
+			}
+		}
+		else
+		{
+			currentDrinkNums--;
+		}
+		
+	}
+	return DrinkindWithNums[drinkId-1].first.GetName();
+}
