@@ -158,6 +158,7 @@ std::string AutoSaleMachine::Sale(int drinkId)
 			{
 				for (int i = 0; i < DrinkindWithNums.size(); i++)
 					currentDrinkNums += DrinkindWithNums[i].second;
+
 			}
 		}
 		else
